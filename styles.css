@@ -1,0 +1,51 @@
+body {
+    font-family: sans-serif;
+    background-color: black ;
+    text-align: center;
+    color : white ; 
+    padding : 0px ;
+    margin : 0px ; 
+}
+h1{
+    text-decoration: underline;
+}
+.calculator {
+    background-color : papayawhip;
+    height : 80vh ; 
+    width : 55vh ; 
+    margin : auto ;
+    border : 5px solid rgb(39, 31, 31) ;
+    border-radius : 10px 
+}
+.screen{
+    background-color: rgb(170, 185, 170);
+    height : 16vh ; 
+    width : 55vh;
+    border : 3px solid black ; 
+    border-radius: 5px 5px 0px 0px ;
+    margin : 0px ; 
+    padding : 0px ; 
+}
+.keypad{
+    height : 64vh ; 
+    width : 55vh ; 
+    display: flex ; 
+    flex-direction: column;
+    flex : 1 ; 
+    border : 3px solid black ; 
+}
+.firstLine, .secondLine, .thirdLine, .fourthLine {
+    height : 64vh ; 
+    width : 54.5vh ; 
+    display : flex ; 
+    justify-content: space-around;
+    align-items: center;
+    flex : 1 ; 
+}
+.button {
+   height : 90%;
+   width : 24% ; 
+   border : 3px solid black ; 
+   border-radius : 6px ; 
+   font-size : 2rem; 
+}
