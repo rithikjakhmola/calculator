@@ -1,29 +1,67 @@
-let currentValue = 0 ; 
-let secondValue = 0 ; 
+let currentValue = null;
+let secondValue = null;
+let operator = null;
 const screen = document.querySelector('.screen');
 screen.textContent = '';
-let cnt = 0 ; 
-let operator ; 
-let operator2 ; 
-function divide (a,b){
-    let c = a/b ; 
-    return c ;   
+
+function divide(a, b) {
+    return a / b;
 }
-function multiply (a,b){
-    let c = a*b ; 
-    return c ; 
+function multiply(a, b) {
+    return a * b;
 }
-function add (a,b ){
-    let c = a+b; 
-    return c ; 
+function add(a, b) {
+    return a + b;
 }
-function subtract (a,b ){
-    let c = a-b ; 
-    return c ; 
-}
-function clicking (a){
-    if (a == '/' || a=='*'|| a=='+'|| a=='-'){
-    
+function subtract(a, b) {
+    return a - b;
 }
 
+function clearScreen() {
+    currentValue = null;
+    secondValue = null;
+    operator = null;
+    screen.textContent = '';
+}
 
+function calculate() {
+    if (currentValue !== null && secondValue !== null && operator) {
+        if (operator === '+') currentValue = add(currentValue, secondValue);
+        else if (operator === '-') currentValue = subtract(currentValue, secondValue);
+        else if (operator === '*') currentValue = multiply(currentValue, secondValue);
+        else if (operator === '/') currentValue = divide(currentValue, secondValue);
+
+        secondValue = null;
+        operator = null;
+        screen.textContent = currentValue;
+    }
+}
+
+function clicking(x) {
+    if (x === '.') {
+        clearScreen();
+        return;
+    }
+
+    if (!isNaN(x)) {
+        if (operator === null) {
+            if (currentValue === null) currentValue = x;
+            else currentValue = currentValue * 10 + x;
+            screen.textContent = currentValue;
+        } else {
+            if (secondValue === null) secondValue = x;
+            else secondValue = secondValue * 10 + x;
+            screen.textContent = `${currentValue} ${operator} ${secondValue}`;
+        }
+    } 
+    else if (x === '=') {
+        calculate();
+    } 
+    else {
+        if (currentValue !== null) {
+            if (secondValue !== null) calculate();
+            operator = x;
+            screen.textContent = `${currentValue} ${operator}`;
+        }
+    }
+}
